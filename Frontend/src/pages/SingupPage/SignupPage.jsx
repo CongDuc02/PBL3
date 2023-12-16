@@ -30,7 +30,7 @@ const SignupPage = () => {
   const { data, isLoading, isSuccess, isError } = mutation
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && data?.status === 'OK') {
       message.success()
       handleNavigateSignIn()
     } else if (isError) {
@@ -64,7 +64,7 @@ const SignupPage = () => {
           <h1>Xin chào bạn!</h1>
           <p>Đăng ký tài khoản </p>
         
-        <InputForm style={{ marginBottom: '10px' }} placeholder='Tên tài khoản' value={email} onChange={handleOnchangeEmail} />
+        <InputForm style={{ marginBottom: '10px' }} placeholder='Email' value={email} onChange={handleOnchangeEmail} />
         <div style={{ position: 'relative' }}>
             <span
               onClick={() => setIsShowPassword(!isShowPassword)}

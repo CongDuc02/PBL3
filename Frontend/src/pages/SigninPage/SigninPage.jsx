@@ -32,7 +32,7 @@ const SigninPage = () => {
   const { data, isLoading, isSuccess } = mutation;
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && data?.status === 'OK') {
       if(location?.state) {
         navigate(location?.state)
       }else {
@@ -96,7 +96,7 @@ const SigninPage = () => {
 
           <InputForm
             style={{ marginBottom: "10px" }}
-            placeholder="Tên tài khoản"
+            placeholder="Email"
             onChange={handleOnchangeEmail}
           />
 
