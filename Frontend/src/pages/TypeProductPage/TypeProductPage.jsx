@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom'
 import Loading from '../../components/LoadingComponent/Loading'
 import { useSelector } from 'react-redux'
 import { useDebounce } from '../../hooks/useDebounce'
+import Footer from '../Footer/Footer'
 
 
 const TypeProductPage = () => {
@@ -48,6 +49,7 @@ const TypeProductPage = () => {
 
   return (
     <Loading isLoading={loading}>
+
       <div style={{ width: '100%', background: '#efefef', height: 'calc(100vh - 64px)' }}>
         <div style={{ width: '1270px', margin: '0 auto', height: '100%' }}>
         <Row style={{ flexWrap: 'nowrap', paddingTop: '10px',height: 'calc(100% - 20px)' }}>
@@ -84,6 +86,11 @@ const TypeProductPage = () => {
           </Row>
         </div>
       </div>
+      <div style={{ padding: '50px 120px' }}>
+      <Footer>
+
+      </Footer>
+    </div>
     </Loading>
   )
 }

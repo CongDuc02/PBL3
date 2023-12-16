@@ -11,6 +11,7 @@ import Loading from "../../components/LoadingComponent/Loading";
 import {InvalidTokenError, jwtDecode} from "jwt-decode";
 import { useDispatch, useSelector } from 'react-redux'
 import { updateUser } from "../../redux/slides/userSlide"
+import Footer from "../Footer/Footer";
 
 
 const SigninPage = () => {
@@ -72,6 +73,7 @@ const SigninPage = () => {
   };
 
   return (
+    <div style={{ padding: '0 120px' }}>
     <div
       style={{
         display: "flex",
@@ -149,6 +151,10 @@ const SigninPage = () => {
         </WrapperContainerLeft>
         <WrapperContainerRight></WrapperContainerRight>
       </div>
+      </div>
+      <Footer>
+        
+    </Footer>
     </div>
   );
 };

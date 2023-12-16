@@ -9,6 +9,7 @@ import ButtonComponent from '../../components/ButtonComponents/ButtonComponent';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useMutationHooks } from '../../hooks/useMutationHook';
 import * as message from '../../components/Message/Message'
+import Footer from '../Footer/Footer';
 
 const MyOrderPage = () => {
   const location = useLocation()
@@ -86,6 +87,7 @@ const MyOrderPage = () => {
 
   return (
     <Loading isLoading={isLoading || isLoadingCancel}>
+      
       <WrapperContainer>
         <div style={{height: '100%', width: '1270px', margin: '0 auto'}}>
           <h4>Đơn hàng của tôi</h4>
@@ -145,6 +147,11 @@ const MyOrderPage = () => {
           </WrapperListOrder>
         </div>
       </WrapperContainer>
+      <div style={{ padding: '50px 120px' }}>
+      <Footer>
+
+      </Footer>
+    </div>
     </Loading>
   )
 }

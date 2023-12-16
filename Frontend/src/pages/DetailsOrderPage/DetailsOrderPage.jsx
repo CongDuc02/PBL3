@@ -11,6 +11,7 @@ import { orderContant } from '../../contain'
 import { convertPrice } from '../../utils'
 import { useMemo } from 'react'
 import Loading from '../../components/LoadingComponent/Loading'
+import Footer from '../Footer/Footer'
 
 const DetailsOrderPage = () => {
   const params = useParams()
@@ -118,6 +119,12 @@ const DetailsOrderPage = () => {
       </WrapperStyleContent>
       </div>
     </div>
+    <div style={{ padding: '50px 120px' }}>
+      <Footer>
+
+      </Footer>
+    </div>
+    
    </Loading>
   )
 }

@@ -19,7 +19,7 @@ const SlideComponent = ({ arrImage }) => {
       {arrImage.map((image, index) => {
         return (
           <center key={index}>
-            <Image src={image} alt="Slider" preview={false} width="1000px" height="350px" />
+            <Image src={image} alt="Slider" preview={false} width="1200px" height="350px" />
           </center>
         )
       })}

@@ -2,8 +2,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import TypeProduct from '../../components/TypeProduct/TypeProduct'
 import { WrapperButtonMore, WrapperProduct, WrapperTypeProduct } from './style'
 import SlideComponent from '../../components/SlideComponent/SlideComponent'
-import slide1 from '../../Imagess/Image/Slide1.webp'
-import slide2 from '../../Imagess/Image/Slide2.webp'
+import Slide1 from '../../Imagess/Image/Slide1.webp'
+import Slide2 from '../../Imagess/Image/Slide2.webp'
+import Slide3 from '../../Imagess/Image/Slide3.webp'
+import Slide4 from '../../Imagess/Image/Slide4.webp'
 import ButtonComponent from '../../components/ButtonComponents/ButtonComponent'
 import CardComponent from '../../components/CardComponent/CardComponent'
 import { useQuery } from '@tanstack/react-query'
@@ -11,6 +13,7 @@ import * as ProductService from '../../services/ProductService'
 import { useSelector } from 'react-redux'
 import Loading from '../../components/LoadingComponent/Loading'
 import { useDebounce } from '../../hooks/useDebounce'
+import Footer from '../Footer/Footer'
 
 
 
@@ -55,7 +58,7 @@ const Homepage = () => {
           )
         })}
       </WrapperTypeProduct>
-      <SlideComponent arrImage={[slide1, slide2]} />
+      <SlideComponent arrImage={[Slide1, Slide2, Slide3, Slide4]} />
       <WrapperProduct >
             {products?.data?.map((product) => {
               return (
@@ -85,6 +88,11 @@ const Homepage = () => {
         onClick={() => setLimit((prev) => prev + 6)}
         />
       </div>
+      </div>
+      <div style={{ padding: '50px 120px' }}>
+      <Footer>
+
+      </Footer>
     </div>
   </Loading>
   )

@@ -5,14 +5,16 @@ import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { orderContant } from '../../contain';
 import { convertPrice } from '../../utils';
+import Footer from '../Footer/Footer';
 
 
 const OrderSucess = () => {
   const location = useLocation()
   const {state} = location
   return (
+    
+    <Loading isLoading={false}>
     <div style={{background: '#f5f5fa', with: '100%', height: '100vh'}}>
-      <Loading isLoading={false}>
         <div style={{height: '100%', width: '1270px', margin: '0 auto'}}>
           <h3>Đơn hàng đặt thành công</h3>
           <div style={{ display: 'flex', justifyContent: 'center'}}>
@@ -67,8 +69,14 @@ const OrderSucess = () => {
             </WrapperContainer>
           </div>
         </div>
-      </Loading>
-    </div>
+        
+      </div>
+      <div style={{ padding: '50px 120px' }}>
+        <Footer>
+
+        </Footer>
+      </div>
+    </Loading>
   )
 }
 

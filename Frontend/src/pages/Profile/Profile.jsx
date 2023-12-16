@@ -11,6 +11,7 @@ import Loading from '../../components/LoadingComponent/Loading'
 import { Button } from 'antd'
 import { UploadOutlined} from '@ant-design/icons'
 import { getBase64 } from '../../utils'
+import Footer from '../Footer/Footer'
 
 
 const ProfilePage = () => {
@@ -190,6 +191,11 @@ const ProfilePage = () => {
                         ></ButtonComponent>
                 </WrapperInput>
             </WrapperContentProfile>
+            <div style={{ paddingTop: '50px' }}>
+            <Footer>
+
+            </Footer>
+            </div>
             </Loading>
             
         </div>

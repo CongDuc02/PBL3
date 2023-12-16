@@ -6,6 +6,7 @@ import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
 import AdminUser from '../../components/AdminUser/AdminUser';
 import AdminProduct from '../../components/AdminProduct/AdminProduct';
 import OrderAdmin from '../../components/OrderAdmin/OrderAdmin';
+import Footer from '../Footer/Footer';
 
 
 const AdminPage = () => {
@@ -57,6 +58,11 @@ const AdminPage = () => {
           {renderPage(keySelected)}
         </div>
       </div>
+      <div style={{ padding: '200px 120px' }}>
+      <Footer>
+
+      </Footer>
+    </div>
     </>
     
   )

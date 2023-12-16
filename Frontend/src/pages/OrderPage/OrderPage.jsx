@@ -18,6 +18,7 @@ import * as message from '../../components/Message/Message'
 import { updateUser } from '../../redux/slides/userSlide';
 import { useNavigate } from 'react-router-dom';
 import StepComponent from '../../components/StepConponent/StepConponent';
+import Footer from '../Footer/Footer';
 
 const OrderPage = () => {
   const order = useSelector((state) => state.order)
@@ -205,6 +206,7 @@ const OrderPage = () => {
     },
   ]
   return (
+    <div>
     <div style={{background: '#f5f5fa', with: '100%', height: '100%'}}>
       <div style={{height: '100%', width: '1270px', margin: '0 auto'}}>
         <h3 style={{fontWeight: 'bold'}}>Giỏ hàng</h3>
@@ -352,6 +354,12 @@ const OrderPage = () => {
           </Form>
         </Loading>
       </ModalComponent>
+    </div>
+    <div style={{ padding: '50px 120px' }}>
+      <Footer>
+
+      </Footer>
+    </div>
     </div>
   )
 }

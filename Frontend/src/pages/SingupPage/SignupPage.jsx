@@ -8,6 +8,7 @@ import * as UserService from '../../services/UserService'
 import { useMutationHooks } from '../../hooks/useMutationHook'
 import Loading from '../../components/LoadingComponent/Loading'
 import * as message from '../../components/Message/Message'
+import Footer from '../Footer/Footer'
 
 
 const SignupPage = () => {
@@ -56,6 +57,7 @@ const SignupPage = () => {
   }
 
   return (
+    <div style={{ padding: '0 120px' }}>
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ width: '500px', height: '445px', borderRadius: '6px', background: '#fff', display: 'flex' }}>
         <WrapperContainerLeft >
@@ -116,6 +118,10 @@ const SignupPage = () => {
         <p >Đã có tài khoản ? <span onClick={handleNavigateSignIn} style={{ color: 'blue', cursor: 'pointer' }}>Đăng nhập</span></p>
         </WrapperContainerLeft>
       </div>
+      </div>
+      <Footer>
+        
+    </Footer>
     </div>
   )
 }
