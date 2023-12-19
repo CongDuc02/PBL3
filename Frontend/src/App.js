@@ -17,17 +17,15 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const user = useSelector((state) => state.user)
 
-  useEffect(() =>{
+  useEffect( () =>{
 
     setIsLoading(true)
     let {storageData, decoded} = handleDecoded()
     if (decoded?.id) {
             handleGetDetailsUser(decoded?.id, storageData)
           }
-
     setIsLoading(false)
     }, [])
-
 
   const handleDecoded = () => {
     let storageData = localStorage.getItem('access_token')
@@ -40,23 +38,30 @@ function App() {
   }
   
   UserService.axiosJWT.interceptors.request.use(async (config) => {
+    // Do something before request is sent
     const currentTime = new Date()
     const { decoded } = handleDecoded()
+    let storageRefreshToken = localStorage.getItem('refresh_token')
+    const refreshToken = JSON.parse(storageRefreshToken)
+    const decodedRefreshToken =  jwtDecode(refreshToken)
     if (decoded?.exp < currentTime.getTime() / 1000) {
-      // if(decodedRefreshToken?.exp > currentTime.getTime() / 1000) {
-        const data = await UserService.refreshToken()
+      if(decodedRefreshToken?.exp > currentTime.getTime() / 1000) {
+        const data = await UserService.refreshToken(refreshToken)
         config.headers['token'] = `Bearer ${data?.access_token}`
+      }else {
+        dispatch(resetUser())
       }
+    }
     return config;
-  },(err) => {
+  }, (err) => {
     return Promise.reject(err)
   })
   
   const handleGetDetailsUser = async (id, token) => {
-    // const storage = localStorage.getItem('refresh_token')
-    // const refreshToken = JSON.parse(storage)
+    const storage = localStorage.getItem('refresh_token')
+    const refreshToken = JSON.parse(storage)
     const res = await UserService.getDetailsUser(id, token)
-  dispatch(updateUser({ ...res?.data, access_token: token }))
+  dispatch(updateUser({ ...res?.data, access_token: token, refreshToken }))
 
 }
   
@@ -69,16 +74,19 @@ function App() {
             {
               routes.map((route) => {
                 const Page = route.page
-                // const isCheckAuth = !route.isPrivated || user.isAdmin
+                const isCheckAuth = !route.isPrivated || user.isAdmin
                 const Layout = route.isShowHeader ? DefaultComponent : Fragment
-                return (
-                  <Route key={ route.path} path={route.path} element={
-                    
-                    <Layout>
-                      <Page />
-                    </Layout>
-                  } />
-                )
+                return isCheckAuth ? (
+                  <Route
+                    key={route.path}
+                    path={route.path}
+                    element={
+                      <Layout>
+                        <Page />
+                      </Layout>
+                    }
+                  />
+                ) : null;
               })
             }
           </Routes>

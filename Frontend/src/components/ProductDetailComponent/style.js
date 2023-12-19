@@ -8,6 +8,15 @@ export const WrapperStyleNameProduct = styled.div`
     line-height:32px;
     word-break:break-word;
 `
+export const WrapperStyleDescriptionProduct = styled.div`
+    padding-bottom: 20px;
+    color: rgb(35,35,35);
+    font-size:18px;
+    font-weight:300;
+    line-height:32px;
+    word-break:break-word;
+`
+
 export const WrapperPriceProduct = styled.div`
     background:rgb(250,250,250);
     border-radius:4px;

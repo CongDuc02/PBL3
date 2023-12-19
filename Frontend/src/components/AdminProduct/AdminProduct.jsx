@@ -32,6 +32,8 @@ const AdminProduct = () => {
     description: '',
     rating: '',
     image: '',
+    images: [],
+
     type: '',
     countInStock: '',
     newType: '',
@@ -48,6 +50,8 @@ const AdminProduct = () => {
         description,
         rating,
         image,
+        images,
+
         type,
         countInStock,
         discount} = data
@@ -57,6 +61,8 @@ const AdminProduct = () => {
         description,
         rating,
         image,
+        images,
+
         type,
         countInStock,
         discount
@@ -132,6 +138,8 @@ const AdminProduct = () => {
         description: res?.data?.description,
         rating: res?.data?.rating,
         image: res?.data?.image,
+        images: res?.data?.images,
+
         type: res?.data?.type,
         countInStock: res?.data?.countInStock,
         discount: res?.data?.discount
@@ -365,6 +373,8 @@ const AdminProduct = () => {
       description: '',
       rating: '',
       image: '',
+      images: [],
+
       type: '',
       countInStock: '',
       discount: ''
@@ -390,6 +400,8 @@ const AdminProduct = () => {
       description: '',
       rating: '',
       image: '',
+      images: [],
+
       type: '',
       countInStock: '',
       discount: '',
@@ -417,6 +429,8 @@ const AdminProduct = () => {
       description: stateProduct.description,
       rating: stateProduct.rating,
       image: stateProduct.image,
+      images: stateProduct.images,
+
       type: stateProduct.type === 'add_type' ? stateProduct.newType : stateProduct.type,
       countInStock: stateProduct.countInStock,
       discount: stateProduct.discount
@@ -455,14 +469,20 @@ const AdminProduct = () => {
   }
     
     const handleOnchangeAvatarDetails = async ({fileList}) => {
-      const file = fileList[0]
-      if (!file.url && !file.preview) {
-          file.preview = await getBase64(file.originFileObj);
+    const newImages = [];
+    for (let file of fileList) {
+      if (file.url || file.preview) {
+        continue; // Skip images that are already in the fileList
       }
-      setStateProductDetails({
-        ...stateProductDetails,
-        image: file.preview
-      })
+    
+      const base64Image = await getBase64(file.originFileObj);
+      newImages.push(base64Image);
+    }
+
+    setStateProductDetails({
+      ...stateProductDetails,
+      images: newImages // Set the images state to only contain the newly uploaded images
+    });
       
   }
 
@@ -487,9 +507,9 @@ const AdminProduct = () => {
   return (
     <div>
       <WrapperHeader>Quản lý sản phẩm</WrapperHeader>
-      <div style={{marginTop: '10px'}}>
-      <Button style={{height: '150px', width: '150px', borderRadius: '6px',
-              borderStyle: 'dashed'}} onClick={() => setIsModalOpen(true)}><PlusOutlined style={{fontSize: '60px'}}  />
+      <div style={{height: 'auto', backgroundColor: '#0dc826', color: 'white', textAlign: 'center' ,marginTop: '10px'}}>
+      <Button  onClick={() => setIsModalOpen(true)}><PlusOutlined style={{fontSize: '10px'}}  />
+              Thêm sản phẩm
       </Button>
       </div>
       <div style={{marginTop: '20px'}}>
@@ -607,7 +627,25 @@ const AdminProduct = () => {
                     )}
           </WrapperUploadFile>
         </Form.Item>
-
+                    
+        <Form.Item
+          label="Images"
+          name="images"
+          rules={[{ required: true, message: 'Please input your images!' }]}
+        >
+          <WrapperUploadFile onChange={handleOnchangeAvatarDetails} maxCount={5} multiple>
+            <Button>Select File</Button>
+            {stateProductDetails?.images && (
+                      <img src={stateProductDetails?.images} style={{
+                        height: '60px',
+                        width: '60px',
+                        borderRadius: '50%',
+                        objectFit: 'cover',
+                        marginLeft: '10px'
+                      }} alt="avatar" />
+                    )}
+          </WrapperUploadFile>
+          </Form.Item>
 
         
 
@@ -707,9 +745,26 @@ const AdminProduct = () => {
           </WrapperUploadFile>
         </Form.Item>
 
+        <Form.Item
+          label="Images"
+          name="images"
+          rules={[{ required: true, message: 'Please input your images!' }]}
+        >
+          <WrapperUploadFile onChange={handleOnchangeAvatarDetails} maxCount={5} multiple>
+            <Button>Select File</Button>
+            {stateProductDetails?.images && (
+                      <img src={stateProductDetails?.images} style={{
+                        height: '60px',
+                        width: '60px',
+                        borderRadius: '50%',
+                        objectFit: 'cover',
+                        marginLeft: '10px'
+                      }} alt="avatar" />
+                    )}
 
-        
-
+          </WrapperUploadFile>
+          </Form.Item>
+                
         <Form.Item wrapperCol={{ offset: 20, span: 16 }}>
           <Button type="primary" htmlType="submit">
             Apply

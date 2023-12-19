@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 
 export const WrapperHeader = styled(Row)`
   padding: 10px 120px;
-  background-color: #696969
+  background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
   
 `
 export const WrapperTextHeader = styled(Link)`
     font-family: 'slick';
     font-style: oblique;
     font-size: 30px;
-     color: #fff;
+    color: #fff;
     font-weight: bold;
     text-align: left;
     &:hover {
@@ -27,6 +27,7 @@ color: #fff
 gap:8px;
 `
 export const WrapperHeaderSmall = styled.span`
+width: 
 font-size: 13px;
 color: #fff
 `

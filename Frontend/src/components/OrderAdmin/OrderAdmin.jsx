@@ -159,9 +159,9 @@ const OrderAdmin = () => {
   return (
     <div>
       <WrapperHeader>Quản lý đơn hàng</WrapperHeader>
-      <div style={{height: 200, width:200}}>
+      {/* <div style={{height: 200, width:200}}>
         <PieChartComponent data={orders?.data} />
-      </div>
+      </div> */}
       <div style={{ marginTop: '20px' }}>
         <TableComponent  columns={columns} isLoading={isLoadingOrders} data={dataTable} />
       </div>

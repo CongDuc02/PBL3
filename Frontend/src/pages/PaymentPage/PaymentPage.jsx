@@ -256,7 +256,8 @@ const PaymentPage = () => {
                   <Lable>Chọn phương thức giao hàng</Lable>
                   <WrapperRadio onChange={handleDilivery} value={delivery}> 
                     <Radio  value="fast"><span style={{color: '#ea8500', fontWeight: 'bold'}}>FAST</span> Giao hàng tiết kiệm</Radio>
-                    <Radio  value="gojek"><span style={{color: '#ea8500', fontWeight: 'bold'}}>GO_JEK</span> Giao hàng tiết kiệm</Radio>
+                    <Radio  value="jvt"><span style={{color: '#ea8500', fontWeight: 'bold'}}>J&T Express</span> Giao hàng tiết kiệm</Radio>
+                    <Radio  value="ghn"><span style={{color: '#ea8500', fontWeight: 'bold'}}>GHN Express</span> Giao hàng nhanh</Radio>
                   </WrapperRadio>
                 </div>
               </WrapperInfo>
@@ -264,8 +265,9 @@ const PaymentPage = () => {
                 <div>
                   <Lable>Chọn phương thức thanh toán</Lable>
                   <WrapperRadio onChange={handlePayment} value={payment}> 
-                    <Radio value="later_money"> Thanh toán tiền mặt khi nhận hàng</Radio>
-                    <Radio value="paypal"> Thanh toán tiền bằng paypal</Radio>
+                    <Radio value="later_money"> Thanh toán khi nhận hàng</Radio>
+                    <Radio value="zalopay"> Thanh toán bằng zalopay</Radio>
+                    <Radio value="paypal"> Thanh toán bằng paypal</Radio>
                   </WrapperRadio>
                 </div>
               </WrapperInfo>
@@ -281,7 +283,7 @@ const PaymentPage = () => {
                 </WrapperInfo>
                 <WrapperInfo>
                   <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                    <span>Tạm tính</span>
+                    <span>Thành tiền</span>
                     <span style={{color: '#000', fontSize: '14px', fontWeight: 'bold'}}>{convertPrice(priceMemo)}</span>
                   </div>
                   <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
@@ -297,7 +299,7 @@ const PaymentPage = () => {
                   <span>Tổng tiền</span>
                   <span style={{display:'flex', flexDirection: 'column'}}>
                     <span style={{color: 'rgb(254, 56, 52)', fontSize: '24px', fontWeight: 'bold'}}>{convertPrice(totalPriceMemo)}</span>
-                    <span style={{color: '#000', fontSize: '11px'}}>(Đã bao gồm VAT nếu có)</span>
+                    <span style={{color: '#000', fontSize: '11px'}}></span>
                   </span>
                 </WrapperTotal>
               </div>

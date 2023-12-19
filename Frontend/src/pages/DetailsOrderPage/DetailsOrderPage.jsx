@@ -14,6 +14,7 @@ import Loading from '../../components/LoadingComponent/Loading'
 import Footer from '../Footer/Footer'
 
 const DetailsOrderPage = () => {
+  
   const params = useParams()
   const location = useLocation()
   const { state } = location
@@ -35,7 +36,7 @@ const DetailsOrderPage = () => {
     },0)
     return result
   },[data])
-
+  
   return (
    <Loading isLoading={isLoading}>
      <div style={{width: '100%', height: '100%', background: '#f5f5fa'}}>
@@ -53,7 +54,11 @@ const DetailsOrderPage = () => {
           <WrapperInfoUser>
             <WrapperLabel>Hình thức giao hàng</WrapperLabel>
             <WrapperContentInfo>
-              <div className='delivery-info'><span className='name-delivery'>FAST </span>Giao hàng tiết kiệm</div>
+              <div className='delivery-info'><span style={{color: '#ea8500', fontWeight: 'bold'}} >FAST </span>
+                      <span>
+                       Giao hàng tiết kiệm
+                      </span>
+                      </div>
               <div className='delivery-fee'><span>Phí giao hàng: </span> {data?.shippingPrice}</div>
             </WrapperContentInfo>
           </WrapperInfoUser>
@@ -105,7 +110,7 @@ const DetailsOrderPage = () => {
           })}
           
           <WrapperAllPrice>
-            <WrapperItemLabel>Tạm tính</WrapperItemLabel>
+            <WrapperItemLabel>Thành tiền</WrapperItemLabel>
             <WrapperItem>{convertPrice(priceMemo)}</WrapperItem>
           </WrapperAllPrice>
           <WrapperAllPrice>

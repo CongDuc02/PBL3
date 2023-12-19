@@ -16,17 +16,20 @@ const Footer = () => {
         <div style={{paddingTop: '0px', borderTop: '3px solid #ee4d2d', justifyContent: 'center',width: '1270px'}}>
             <Container>
             <Left>
-            <Logo>SHOP - NỀN TẢNG MUA SẮM TRỰC TUYẾN UY TÍN</Logo>
+            <Logo>SHOP ĐI KÂY - NỀN TẢNG MUA SẮM TRỰC TUYẾN UY TÍN</Logo>
             <Desc>
-                There are many variations of passages of Lorem Ipsum available, but
-                the majority have suffered alteration in some form, by injected
-                humour, or randomised words which don’t look even slightly believable.
+            Shop Đi Kây là nền tảng Thương mại điện tử quen thuộc của hàng triệu
+            người tiêu dùng bởi sự đa dạng hàng đầu về chủng loại sản phẩm, 
+            ứng dụng công nghệ mua sắm và giải trí thông minh cùng dịch vụ chăm sóc khách hàng tối ưu.
+            Đáng chú ý, Đi Kây còn thu hút người dùng với các Lễ Hội Mua Sắm siêu lớn trong năm, 
+            đây được xem là các thời điểm mua sắm không thể bỏ lỡ của các tín đồ mua sắm trên toàn quốc.
             </Desc>
             
             </Left>
             <Center>
             <Title>Hỗ trợ khách hàng</Title>
             <List>
+                <ListItem>Hotline & Chat trực tuyến (24/7)</ListItem>
                 <ListItem>Các câu hỏi thường gặp</ListItem>
                 <ListItem>Gửi yêu cầu hỗ trợ</ListItem>
                 <ListItem>Hướng dẫn đặt hàng</ListItem>
@@ -34,9 +37,7 @@ const Footer = () => {
                 <ListItem>Chính sách đổi trả</ListItem>
                 <ListItem>Hướng dẫn trả góp</ListItem>
                 <ListItem>Chính sách hàng nhập khẩu</ListItem>
-                <ListItem>Wishlist</ListItem>
-                <ListItem>Wishlist</ListItem>
-                <ListItem>Terms</ListItem>
+                <ListItem>Trung tâm hỗ trợ</ListItem>
             </List>
             </Center>
             <Center2>
@@ -51,7 +52,6 @@ const Footer = () => {
                 <ListItem>Gói hội viên VIP</ListItem>
                 <ListItem>Bán hàng doanh nghiệp</ListItem>
                 <ListItem>Tiếp thị liên kết cùng Shop</ListItem>
-                <ListItem>Điều kiện vận chuyển</ListItem>
             </List>
             </Center2>
             <Right>

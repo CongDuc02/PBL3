@@ -11,6 +11,7 @@ import Footer from '../Footer/Footer';
 const OrderSucess = () => {
   const location = useLocation()
   const {state} = location
+  
   return (
     
     <Loading isLoading={false}>
@@ -23,7 +24,10 @@ const OrderSucess = () => {
                 <div>
                   <Lable>Phương thức giao hàng</Lable>
                     <WrapperValue>
-                      <span style={{color: '#ea8500', fontWeight: 'bold'}}>{orderContant.delivery[state?.delivery]}</span> Giao hàng tiết kiệm
+                      <span style={{color: '#ea8500', fontWeight: 'bold'}} >FAST</span>
+                      <span>
+                      {orderContant.delivery[state?.delivery] === 'GHN Express' ? ' Giao hàng nhanh' : ' Giao hàng tiết kiệm'}
+                      </span>
                     </WrapperValue>
                 </div>
               </WrapperInfo>

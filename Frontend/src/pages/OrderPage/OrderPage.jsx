@@ -220,7 +220,7 @@ const OrderPage = () => {
             </WrapperStyleHeaderDilivery>
             <WrapperStyleHeader>
                 <span style={{display: 'inline-block', width: '390px'}}>
-                  <CustomCheckbox onChange={handleOnchangeCheckAll} checked={listChecked?.length === order?.orderItems?.length}></CustomCheckbox>
+                  <CustomCheckbox key={user.id} value={order?.orderItems?.length} onChange={handleOnchangeCheckAll} checked={listChecked?.length === order?.orderItems?.length}></CustomCheckbox>
                   <span> Tất cả ({order?.orderItems?.length} sản phẩm)</span>
                 </span>
                 <div style={{flex:1,display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
@@ -276,7 +276,7 @@ const OrderPage = () => {
               </WrapperInfo>
               <WrapperInfo>
                 <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                  <span>Tạm tính</span>
+                  <span>Thành tiền</span>
                   <span style={{color: '#000', fontSize: '14px', fontWeight: 'bold'}}>{convertPrice(priceMemo)}</span>
                 </div>
                 <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
@@ -292,7 +292,7 @@ const OrderPage = () => {
                 <span>Tổng tiền</span>
                 <span style={{display:'flex', flexDirection: 'column'}}>
                   <span style={{color: 'rgb(254, 56, 52)', fontSize: '24px', fontWeight: 'bold'}}>{convertPrice(totalPriceMemo)}</span>
-                  <span style={{color: '#000', fontSize: '11px'}}>(Đã bao gồm VAT nếu có)</span>
+                  <span style={{color: '#000', fontSize: '11px'}}></span>
                 </span>
               </WrapperTotal>
             </div>

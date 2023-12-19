@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-export const WrapperLableText = styled.h4`
+export const WrapperLabelText = styled.h4`
     color: rgb(56, 56, 61);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
 `
 
 export const WrapperTextValue = styled.span`
     color: rgb(56, 56, 61);
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
 `
 
@@ -25,4 +25,11 @@ export const WrapperTextPrice = styled.div`
     border-radius: 10px;
     background: rgb(238, 238, 238);
     width: fit-content;
+`
+export const StyleNameProduct = styled.div`
+height: 32px;
+font-weight:400;
+font-size:14px;
+line-height:16px;
+color:rgb(56,56,61)
 `

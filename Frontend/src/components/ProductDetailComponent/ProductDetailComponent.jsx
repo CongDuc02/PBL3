@@ -7,7 +7,7 @@ import Ip13_3 from '../../Imagess/Image1/Ip13_3.webp'
 import Ip13_4 from '../../Imagess/Image1/Ip13_4.webp'
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons'
 import { WrapperAddressProduct, WrapperInputNumber, WrapperPriceProduct
-        , WrapperPriceTextProduct, WrapperQualityProduct, WrapperStyleNameProduct, WrapperStyleTextSell } from './style'
+        , WrapperPriceTextProduct, WrapperQualityProduct, WrapperStyleDescriptionProduct, WrapperStyleNameProduct, WrapperStyleTextSell } from './style'
 import ButtonComponent from '../ButtonComponents/ButtonComponent'
 import LikeButtonComponent from '../LikeButtonComponent/LikeButtonComponent'
 import * as ProductService from '../../services/ProductService'
@@ -15,10 +15,11 @@ import * as message from '../Message/Message'
 import Loading from '../LoadingComponent/Loading'
 import { useQuery } from '@tanstack/react-query'
 import { useDispatch, useSelector } from 'react-redux'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { addOrderProduct, resetOrder } from '../../redux/slides/orderSlide'
 import { convertPrice, initFacebookSDK } from '../../utils'
 import CommentComponent from '../CommentComponent/CommentComponent'
+import { WrapperTextHeader } from '../HeaderComponent/style'
 
 
 
@@ -102,6 +103,8 @@ const ProductDetailComponent = ({productId}) => {
                         name: productDetails?.name,
                         amount: numProduct,
                         image: productDetails?.image,
+                        images: productDetails?.images,
+                        description: productDetails?.description,
                         price: productDetails?.price,
                         product: productDetails?._id,
                         discount: productDetails?.discount,
@@ -118,34 +121,25 @@ const ProductDetailComponent = ({productId}) => {
   return (
     <Loading isLoading={isLoading}>
       <Row style={{ padding: '16px', background: '#fff', borderRadius: '4px', height:'100%' }}>
-        <Col span={10} style={{ borderRight: '1px solid #e5e5e5', paddingRight: '8px' }}>
+        <Col span={10} style={{ borderRight: '1px solid #e5e5e5', padding: '10px 8px' }}>
           <Image src={productDetails?.image} alt="Image Iphone" preview='false' />
+          {productDetails?.images && productDetails?.images.length > 0 && (
           <Row style={{ paddingTop: '10px', justifyContent: 'space-between' }}>
-            <Col span={4}>
-              <Image src={Ip13} alt="Image Iphone" preview='false' />
-            </Col>
-            <Col span={4}>
-              <Image src={Ip13_1} alt="Image Iphone" preview='false' />
-            </Col>
-            <Col span={4}>
-              <Image src={Ip13_2} alt="Image Iphone" preview='false' />
-            </Col>
-            <Col span={4}>
-              <Image src={Ip13_3} alt="Image Iphone" preview='false' />
-            </Col>
-            <Col span={4}>
-              <Image src={Ip13_4} alt="Image Iphone" preview='false' />
-            </Col>
-
+            {productDetails?.images.slice(0, 5).map((image, index) => (
+              <Col span={4} key={index} style={{ paddingRight: '2px', paddingBottom: '2px' }}>
+                <Image src={image} alt="Product Image" preview={true} style={{height: '82px' }}/>
+              </Col>
+            ))}
           </Row>
+        )}
         </Col>
         <Col span={14} style={{ paddingLeft: '10px' }}>
           <WrapperStyleNameProduct>
-            {productDetails?.name}
+            <h3>{productDetails?.name}</h3>
           </WrapperStyleNameProduct>
           <div>
             <Rate allowHalf defaultValue={productDetails?.rating} value={productDetails?.rating} />
-            <WrapperStyleTextSell> | Da ban 1000+</WrapperStyleTextSell>
+            <WrapperStyleTextSell> | Da ban {productDetails?.selled}+</WrapperStyleTextSell>
           </div>
           
             <WrapperPriceProduct>
@@ -156,8 +150,13 @@ const ProductDetailComponent = ({productId}) => {
             <WrapperAddressProduct>
                 <span>Giao đến </span>
                 <span className='address'>{user?.address}</span> -
-                <span className='change-address'> Đổi địa chỉ</span>
-            </WrapperAddressProduct>
+                {user?.id ? (
+                <span className='change-address'> <Link to='/profile-user'> Đổi địa chỉ </Link> </span>
+                ):(
+                  <span className='change-address'> <Link to='/signin'> Đổi địa chỉ </Link> </span>
+                )
+                }
+                </WrapperAddressProduct>
             <LikeButtonComponent
               dataHref={ process.env.REACT_APP_IS_LOCAL 
                         ? "https://developers.facebook.com/docs/plugins/"
@@ -176,6 +175,12 @@ const ProductDetailComponent = ({productId}) => {
                   </button>
                 </WrapperQualityProduct>
                 {/* <InputNumber min={1} max={20} defaultValue={3} onChange={onchange} /> */}
+            </div>
+            <div style={{marginBottom: '20px', borderTop: '1px solid #e5e5e5', borderBottom: '1px solid #e5e5e5'}}>
+              <h3> Mô tả: </h3>
+              <WrapperStyleDescriptionProduct>
+              {productDetails?.description}
+            </WrapperStyleDescriptionProduct>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <div>
@@ -208,7 +213,7 @@ const ProductDetailComponent = ({productId}) => {
                 ></ButtonComponent>
             </div>
         </Col>
-        <div style={{margin: '-10px -12px 0'}} className="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" 
+        <div style={{paddingTop: '10px', margin: '-10px -12px 0'}} className="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" 
           data-width="1252" data-numposts="5"></div>
       </Row>
    </Loading>
