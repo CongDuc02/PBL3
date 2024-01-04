@@ -12,6 +12,22 @@ export const signupUser = async (data) => {
     return res.data
 }
 
+export const forgotPassword = async (data) => {
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/forgot-password`, data);
+    return res.data;
+};
+
+export const resetPassword = async (data) => {
+    try {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/reset-password`, data);
+      return res.data;
+    } catch (error) {
+      console.error('Error resetting password:', error);
+      throw error;
+    }
+  };
+
+
 export const getDetailsUser = async (id, access_token) => {
     const res = await axiosJWT.get(`${process.env.REACT_APP_API_URL}/user/get-details/${id}`, {
         headers: {

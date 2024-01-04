@@ -95,7 +95,7 @@ const Footer = () => {
                 </a>
                 </li>
             </ul> */}
-            <Payment src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdO73PVXzepRMyzJx_veThaupjRb4KW8eQAvEasvVx6f7njVLJ-mIUnn7VmV3PN8O-6hE&usqp=CAU'/>
+            <Payment src='https://encrypted-tbn0.gstatic.com/ ?q=tbn:ANd9GcQdO73PVXzepRMyzJx_veThaupjRb4KW8eQAvEasvVx6f7njVLJ-mIUnn7VmV3PN8O-6hE&usqp=CAU'/>
 
             </Right>
             <Right2>

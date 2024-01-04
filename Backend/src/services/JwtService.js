@@ -9,7 +9,7 @@ const genneralAccessToken = async (payload) => {
       ...payload,
     },
     process.env.ACCESS_TOKEN,
-    { expiresIn: "30s" }
+    { expiresIn: "2m" }
   );
 
   return access_token;
@@ -42,7 +42,6 @@ const refreshTokenJwtService =  (token) => {
           id: user?.id,
           isAdmin: user?.isAdmin,
         });
-        console.log('access_token', access_token)
         resolve({
           status: "OK",
           message: "Success",

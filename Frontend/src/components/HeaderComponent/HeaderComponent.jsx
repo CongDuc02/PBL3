@@ -60,7 +60,10 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
         
         <WrapperContentPopup onClick={() => handleClickNavigate('admin')}>Quản lí hệ thống</WrapperContentPopup>
         )}
-      <WrapperContentPopup onClick={() => handleClickNavigate(`my-order`)}>Đơn hàng của tôi</WrapperContentPopup>
+        {!user?.isAdmin && (
+          <WrapperContentPopup onClick={() => handleClickNavigate(`my-order`)}>Đơn hàng của tôi</WrapperContentPopup>
+
+        )}
       <WrapperContentPopup onClick={() => handleClickNavigate()}>Đăng xuất</WrapperContentPopup>
 
     </div>
@@ -167,8 +170,8 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
         </Loading>
         
 
-        {!isHiddenCart && user?.access_token  ? (
-            <div onClick={() => navigate('/order')} style={{ cursor: 'pointer' }}>
+        {!isHiddenCart && user?.access_token ? (
+            <div onClick={() => user?.isAdmin ? navigate('/system/admin') : navigate('/order')} style={{ cursor: 'pointer' }}>
               <Badge count={order?.orderItems?.length} size="small">
                 <ShoppingCartOutlined style={{ color: 'white', fontSize: '30px' }} />
               </Badge>

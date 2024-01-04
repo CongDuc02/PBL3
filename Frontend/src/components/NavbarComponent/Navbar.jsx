@@ -1,7 +1,7 @@
 import { React, memo, useState, useEffect } from 'react'
 
 import { useNavigate } from 'react-router-dom';
-const Navbar = ({id, name}) => {
+const Navbar = ({id, name, rating, price}) => {
 
     const navigate = useNavigate()
     const handleDetailsProduct = (id) => {
@@ -11,6 +11,7 @@ const Navbar = ({id, name}) => {
     return (
         <div>
             <div className='textlabel' onClick={() => handleDetailsProduct(id)}>{name}</div>
+           
         </div>
     )
 }

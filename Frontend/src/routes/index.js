@@ -1,5 +1,6 @@
 import AdminPage from '../pages/AdminPage/AdminPage'
 import DetailsOrderPage from '../pages/DetailsOrderPage/DetailsOrderPage'
+import ForgotPasswordPage from '../pages/ForgotPasswordPage/Forgotpassword'
 import Homepage from '../pages/HomePage/Homepage'
 import MyOrderPage from '../pages/MyOrder/MyOrder'
 import NotfoundPage from '../pages/NotfoudPage/NotfoudPage'
@@ -9,6 +10,7 @@ import PaymentPage from '../pages/PaymentPage/PaymentPage'
 import ProductDetailPage from '../pages/ProductDetailPage/ProductDetailPage'
 import ProductsPage from '../pages/ProductsPage/ProductsPage'
 import ProfilePage from '../pages/Profile/Profile'
+import ResetPasswordPage from '../pages/ResetPasswordPage/ResetPasswordPage'
 import SigninPage from '../pages/SigninPage/SigninPage'
 import SignupPage from '../pages/SingupPage/SignupPage'
 import TypeProductPage from '../pages/TypeProductPage/TypeProductPage'
@@ -64,6 +66,16 @@ export const routes = [
     isShowHeader: false
   },
   {
+    path: '/forgot-password',
+    page: ForgotPasswordPage,
+    isShowHeader: false
+  },
+  {
+    path: '/api/user/reset-password/:resetToken',
+    page: ResetPasswordPage,
+    isShowHeader: false
+  },  
+  {
     path: '/product-details/:id',
     page: ProductDetailPage,
     isShowHeader: true
@@ -73,7 +85,6 @@ export const routes = [
     page: ProfilePage,
     isShowHeader: true
   },
-
   {
     path: '/system/admin',
     page: AdminPage,

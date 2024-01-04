@@ -66,6 +66,49 @@ const loginUser = async (req, res) => {
   }
 };
 
+const forgotPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({
+        status: "ERR",
+        message: "Yêu cầu nhập Email để khôi phục mật khẩu.",
+      });
+    }
+
+    await UserService.forgotPassword(email);
+
+    return res.status(200).json({
+      status: "OK",
+      message: "Email khôi phục mật khẩu đã được gửi thành công.",
+    });
+  } catch (e) {
+    return res.status(500).json({
+      status: "ERR",
+      message: e.message || "Lỗi Nội bộ của máy chủ",
+    });
+  }
+};
+
+const resetPassword = async (req, res) => {
+  try {
+    const { resetToken, password } = req.body;
+
+    const response = await UserService.resetPassword(resetToken, password);
+    
+    if (response.status === "OK") {
+      return res.json({ status: "OK", message: "Password reset successfully." });
+    } else {
+      return res.status(400).json(response);
+    }
+  } catch (error) {
+    console.error("Error resetting password:", error);
+    return res.status(500).json({ status: "ERR", message: "Internal server error." });
+  }
+};
+
+
 const updateUser = async (req, res) => {
   try {
     
@@ -202,6 +245,8 @@ const logoutUser = async (req, res) => {
 module.exports = {
   createUser,
   loginUser,
+  forgotPassword,
+  resetPassword,
   logoutUser,
   updateUser,
   deleteUser,

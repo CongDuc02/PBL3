@@ -1,10 +1,6 @@
 import { Row, Col, Image, InputNumber, Rate } from 'antd'
 import React, { useEffect, useState } from 'react'
-import Ip13 from '../../Imagess/Image1/Ip13.webp'
-import Ip13_1 from '../../Imagess/Image1/Ip13_1.webp'
-import Ip13_2 from '../../Imagess/Image1/Ip13_2.webp'
-import Ip13_3 from '../../Imagess/Image1/Ip13_3.webp'
-import Ip13_4 from '../../Imagess/Image1/Ip13_4.webp'
+
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons'
 import { WrapperAddressProduct, WrapperInputNumber, WrapperPriceProduct
         , WrapperPriceTextProduct, WrapperQualityProduct, WrapperStyleDescriptionProduct, WrapperStyleNameProduct, WrapperStyleTextSell } from './style'

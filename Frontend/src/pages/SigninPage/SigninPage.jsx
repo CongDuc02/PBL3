@@ -27,6 +27,10 @@ const SigninPage = () => {
     navigate("/signup");
   };
 
+  const handleForgotPassword = () => {
+    navigate("/forgot-password");
+  };
+
   const mutation = useMutationHooks((data) => UserService.loginUser(data));
 
   const { data, isLoading, isSuccess } = mutation;
@@ -65,6 +69,12 @@ const SigninPage = () => {
     setPassword(value);
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSignIn(); // Gọi hàm đăng nhập khi nhấn phím Enter
+    }
+  };
+
   const handleSignIn = () => {
     mutation.mutate({
       email,
@@ -98,6 +108,7 @@ const SigninPage = () => {
             style={{ marginBottom: "10px" }}
             placeholder="Email"
             onChange={handleOnchangeEmail}
+            onKeyPress={handleKeyPress}
           />
 
           <div style={{ position: "relative" }}>
@@ -117,6 +128,7 @@ const SigninPage = () => {
               type={isShowPassword ? "text" : "password"}
               value={password}
               onChange={handleOnchangePassword}
+              onKeyPress={handleKeyPress}
             />
           </div>
           {data?.status === "ERR" && (
@@ -138,7 +150,7 @@ const SigninPage = () => {
               styleTextButton={{ color: "#fff", fontSize: "15px" }}
             ></ButtonComponent>
           </Loading>
-          <p style={{ color: "blue", cursor: "pointer" }}> Quên mật khẩu</p>
+          <p onClick={handleForgotPassword} style={{ color: "blue", cursor: "pointer" }}> Quên mật khẩu</p>
           <p>
             Chưa có tài khoản ?{" "}
             <span

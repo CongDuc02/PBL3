@@ -2,7 +2,7 @@ const Product = require("../models/ProductModel");
 
 const createProduct = (newProduct) => {
   return new Promise(async (resolve, reject) => {
-    const { name, image, images, type, price, countInStock, rating, description, discount } 
+    const { name, image, images,  type, price, countInStock, rating, description, discount } 
     = newProduct;
 
     try {
@@ -105,14 +105,14 @@ const deleteManyProduct = (ids) => {
   })
 }
 
-const getAllProduct = (limit, page, sort, filter) => {
+const getAllProduct = (limit, page, sort, filter, rating) => {
   return new Promise(async (resolve, reject) => {
       try {
           const totalProduct = await Product.count()
           let allProduct = []
           if (filter) {
               const label = filter[0];
-              const allObjectFilter = await Product.find({ [label]: { '$regex': filter[1] } }).limit(limit).skip(page * limit).sort({createdAt: -1, updatedAt: -1})
+              const allObjectFilter = await Product.find({ [label]: { '$regex': filter[1] }, rating: { $gte: rating || 0 },}).limit(limit).skip(page * limit).sort({createdAt: -1, updatedAt: -1})
               resolve({
                   status: 'OK',
                   message: 'Success',
